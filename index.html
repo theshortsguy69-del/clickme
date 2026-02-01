@@ -1,0 +1,138 @@
+import React, { useState, useCallback } from 'react';
+import { Heart } from 'lucide-react';
+
+const App = () => {
+  const [noButtonPos, setNoButtonPos] = useState({ x: 0, y: 0 });
+  const [yesScale, setYesScale] = useState(1);
+  const [isAccepted, setIsAccepted] = useState(false);
+  const [isMoving, setIsMoving] = useState(false);
+
+  // Maximum scale for the "Yes" button to avoid total layout collapse
+  const MAX_SCALE = 3.5;
+
+  // Function to move the "No" button randomly and grow the "Yes" button
+  const moveNoButton = useCallback(() => {
+    const padding = 50;
+    const maxX = (window.innerWidth / 2) - padding;
+    const maxY = (window.innerHeight / 2) - padding;
+    
+    const newX = (Math.random() * (maxX * 2)) - maxX;
+    const newY = (Math.random() * (maxY * 2)) - maxY;
+    
+    setNoButtonPos({ x: newX, y: newY });
+    setIsMoving(true);
+
+    // Increment scale by 15% each dodge until max is reached
+    setYesScale(prev => Math.min(prev + 0.15, MAX_SCALE));
+  }, []);
+
+  // SVG of a sitting cat
+  const SittingCat = () => (
+    <div className="relative w-48 h-48 mx-auto mb-4">
+      <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-lg">
+        {/* Tail */}
+        <path 
+          d="M65 85 C 85 85, 95 70, 85 55 C 80 45, 70 50, 70 60" 
+          fill="none" 
+          stroke="#D6A072" 
+          strokeWidth="6" 
+          strokeLinecap="round" 
+        />
+        
+        {/* Body */}
+        <ellipse cx="50" cy="75" rx="22" ry="20" fill="#E8B282" />
+        
+        {/* Chest/Front Paws Area */}
+        <path d="M40 75 L40 92 M60 75 L60 92" stroke="#D6A072" strokeWidth="4" strokeLinecap="round" />
+        
+        {/* Head */}
+        <circle cx="50" cy="45" r="18" fill="#E8B282" />
+        
+        {/* Ears */}
+        <path d="M35 35 L28 18 L45 32 Z" fill="#E8B282" />
+        <path d="M65 35 L72 18 L55 32 Z" fill="#E8B282" />
+        
+        {/* Face Details */}
+        <circle cx="43" cy="43" r="2" fill="#000" />
+        <circle cx="57" cy="43" r="2" fill="#000" />
+        <path d="M50 48 L48 51 L52 51 Z" fill="#D65B82" />
+        
+        <g stroke="#B38A65" strokeWidth="0.5">
+          <line x1="38" y1="48" x2="28" y2="47" />
+          <line x1="38" y1="50" x2="28" y2="52" />
+          <line x1="62" y1="48" x2="72" y2="47" />
+          <line x1="62" y1="50" x2="72" y2="52" />
+        </g>
+      </svg>
+      
+      <div className="absolute top-4 right-6 animate-bounce">
+        <Heart className="w-8 h-8 text-pink-500 fill-pink-500 drop-shadow-sm" />
+      </div>
+    </div>
+  );
+
+  if (isAccepted) {
+    return (
+      <div className="min-h-screen bg-[#FDE2E4] flex flex-col items-center justify-center p-4">
+        <div className="bg-white/80 backdrop-blur-md p-10 md:p-16 rounded-[60px] shadow-2xl text-center animate-in fade-in zoom-in duration-500 max-w-lg w-full">
+          <div className="mb-6 flex justify-center space-x-2">
+            {[...Array(3)].map((_, i) => (
+              <Heart key={i} className="text-pink-600 fill-pink-600 animate-pulse" size={40} style={{ animationDelay: `${i * 200}ms` }} />
+            ))}
+          </div>
+          <h1 className="text-5xl font-black text-gray-800 mb-6 tracking-tighter italic">Perfect! ❤️</h1>
+          <p className="text-xl text-gray-600 font-semibold mb-8">See you on the 14th.</p>
+          <SittingCat />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#FDE2E4] flex items-center justify-center p-4 overflow-hidden font-sans select-none">
+      <div className="bg-white/95 backdrop-blur-sm p-10 md:p-16 rounded-[60px] shadow-2xl text-center max-w-xl w-full relative border-4 border-white transition-all duration-300">
+        
+        <SittingCat />
+
+        <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-14 leading-tight tracking-tight">
+          nirali will you be my valentine?
+        </h1>
+
+        <div className="flex justify-center items-center gap-10 relative min-h-[160px]">
+          <button
+            onClick={() => setIsAccepted(true)}
+            style={{ 
+              transform: `scale(${yesScale})`,
+              transition: 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+            }}
+            className="px-12 py-5 bg-[#E91E63] hover:bg-[#C2185B] text-white text-2xl font-black rounded-full shadow-[0_10px_0_0_#ad1457] active:shadow-none active:translate-y-[5px] z-10 whitespace-nowrap"
+          >
+            Yes
+          </button>
+
+          <button
+            onMouseEnter={moveNoButton}
+            onClick={moveNoButton}
+            style={{
+              position: isMoving ? 'fixed' : 'relative',
+              left: isMoving ? '50%' : 'auto',
+              top: isMoving ? '50%' : 'auto',
+              transform: isMoving ? `translate(calc(-50% + ${noButtonPos.x}px), calc(-50% + ${noButtonPos.y}px))` : 'none',
+              transition: isMoving ? 'all 0.1s cubic-bezier(0.34, 1.56, 0.64, 1)' : 'none',
+              opacity: yesScale > 3 ? 0.5 : 1 // Fade out as Yes button dominates
+            }}
+            className="px-12 py-5 bg-gray-100 text-gray-400 text-xl font-bold rounded-full shadow-inner border-2 border-gray-200 z-20 whitespace-nowrap cursor-default"
+          >
+            No
+          </button>
+        </div>
+
+        <p className="mt-20 text-gray-300 text-xs font-bold tracking-[0.2em] uppercase">
+          "No" is feeling a bit shy today 😈
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default App;
