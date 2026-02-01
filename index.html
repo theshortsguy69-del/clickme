@@ -1,135 +1,133 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be My Valentine?</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-            overflow: hidden;
-        }
-        .bounce {
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+        .bounce {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
 </head>
 <body class="bg-[#FDE2E4] min-h-screen flex items-center justify-center p-4 select-none">
 
-    <div id="mainCard" class="bg-white/95 backdrop-blur-sm p-10 md:p-16 rounded-[60px] shadow-2xl text-center max-w-xl w-full relative border-4 border-white transition-all duration-300">
-        
-        <!-- Sitting Cat SVG -->
-        <div class="relative w-48 h-48 mx-auto mb-4">
-            <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-lg">
-                <path d="M65 85 C 85 85, 95 70, 85 55 C 80 45, 70 50, 70 60" fill="none" stroke="#D6A072" stroke-width="6" stroke-linecap="round" />
-                <ellipse cx="50" cy="75" rx="22" ry="20" fill="#E8B282" />
-                <path d="M40 75 L40 92 M60 75 L60 92" stroke="#D6A072" stroke-width="4" stroke-linecap="round" />
-                <circle cx="50" cy="45" r="18" fill="#E8B282" />
-                <path d="M35 35 L28 18 L45 32 Z" fill="#E8B282" />
-                <path d="M65 35 L72 18 L55 32 Z" fill="#E8B282" />
-                <circle cx="43" cy="43" r="2" fill="#000" />
-                <circle cx="57" cy="43" r="2" fill="#000" />
-                <path d="M50 48 L48 51 L52 51 Z" fill="#D65B82" />
-                <g stroke="#B38A65" stroke-width="0.5">
-                    <line x1="38" y1="48" x2="28" y2="47" />
-                    <line x1="38" y1="50" x2="28" y2="52" />
-                    <line x1="62" y1="48" x2="72" y2="47" />
-                    <line x1="62" y1="50" x2="72" y2="52" />
-                </g>
-            </svg>
-            <div class="absolute top-4 right-6 bounce">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="#EC4899" stroke="#EC4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-            </div>
-        </div>
+    <div id="mainCard" class="bg-white/95 backdrop-blur-sm p-10 md:p-16 rounded-[60px] shadow-2xl text-center max-w-xl w-full relative border-4 border-white transition-all duration-300">
+        
+        <!-- Sitting Cat SVG -->
+        <div class="relative w-48 h-48 mx-auto mb-4">
+            <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-lg">
+                <path d="M65 85 C 85 85, 95 70, 85 55 C 80 45, 70 50, 70 60" fill="none" stroke="#D6A072" stroke-width="6" stroke-linecap="round" />
+                <ellipse cx="50" cy="75" rx="22" ry="20" fill="#E8B282" />
+                <path d="M40 75 L40 92 M60 75 L60 92" stroke="#D6A072" stroke-width="4" stroke-linecap="round" />
+                <circle cx="50" cy="45" r="18" fill="#E8B282" />
+                <path d="M35 35 L28 18 L45 32 Z" fill="#E8B282" />
+                <path d="M65 35 L72 18 L55 32 Z" fill="#E8B282" />
+                <circle cx="43" cy="43" r="2" fill="#000" />
+                <circle cx="57" cy="43" r="2" fill="#000" />
+                <path d="M50 48 L48 51 L52 51 Z" fill="#D65B82" />
+                <g stroke="#B38A65" stroke-width="0.5">
+                    <line x1="38" y1="48" x2="28" y2="47" />
+                    <line x1="38" y1="50" x2="28" y2="52" />
+                    <line x1="62" y1="48" x2="72" y2="47" />
+                    <line x1="62" y1="50" x2="72" y2="52" />
+                </g>
+            </svg>
+            <div class="absolute top-4 right-6 bounce">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="#EC4899" stroke="#EC4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </div>
+        </div>
 
-        <h1 class="text-4xl md:text-5xl font-black text-gray-900 mb-10 leading-tight tracking-tight">
-            Hunnyyy will you be my valentine BABY?
-        </h1>
+        <h1 class="text-4xl md:text-5xl font-black text-gray-900 mb-10 leading-tight tracking-tight">
+            Hunnyyyy will you be my valentine BABY?
+        </h1>
 
-        <div class="flex justify-center items-center gap-10 relative min-h-[120px] mb-8">
-            <button id="yesBtn" class="px-12 py-5 bg-[#E91E63] hover:bg-[#C2185B] text-white text-2xl font-black rounded-full shadow-[0_10px_0_0_#ad1457] active:shadow-none active:translate-y-[5px] z-10 whitespace-nowrap transition-transform duration-200">
-                Yes
-            </button>
+        <div class="flex justify-center items-center gap-10 relative min-h-[120px] mb-8">
+            <button id="yesBtn" class="px-12 py-5 bg-[#E91E63] hover:bg-[#C2185B] text-white text-2xl font-black rounded-full shadow-[0_10px_0_0_#ad1457] active:shadow-none active:translate-y-[5px] z-10 whitespace-nowrap transition-transform duration-200">
+                Yes
+            </button>
 
-            <button id="noBtn" class="px-12 py-5 bg-gray-100 text-gray-400 text-xl font-bold rounded-full shadow-inner border-2 border-gray-200 z-20 whitespace-nowrap cursor-default transition-all duration-100">
-                No
-            </button>
-        </div>
+            <button id="noBtn" class="px-12 py-5 bg-gray-100 text-gray-400 text-xl font-bold rounded-full shadow-inner border-2 border-gray-200 z-20 whitespace-nowrap cursor-default transition-all duration-100">
+                No
+            </button>
+        </div>
 
-        <p class="text-gray-400 text-xs font-bold tracking-[0.2em] uppercase opacity-70">
-            Do not say noooo!!!
-        </p>
-    </div>
+        <p class="text-gray-400 text-xs font-bold tracking-[0.2em] uppercase opacity-70">
+            Do not say noooo!!!
+        </p>
+    </div>
 
-    <!-- Success View -->
-    <div id="successCard" class="hidden bg-white/80 backdrop-blur-md p-10 md:p-16 rounded-[60px] shadow-2xl text-center max-w-lg w-full">
-        <div class="mb-6 flex justify-center space-x-2">
-            <svg class="text-pink-600 animate-pulse" width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-            <svg class="text-pink-600 animate-pulse" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" style="animation-delay: 200ms"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-            <svg class="text-pink-600 animate-pulse" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" style="animation-delay: 400ms"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-        </div>
-        <h1 class="text-5xl font-black text-gray-800 mb-6 tracking-tighter italic"> HEHEHEHEHE Perfect! ❤️</h1>
-        <p class="text-xl text-gray-600 font-semibold mb-8">I LOVEEE YOUUUU MUUAAAAAAHHHHH.</p>
-        <div id="catContainerSuccess"></div>
-    </div>
+    <!-- Success View -->
+    <div id="successCard" class="hidden bg-white/80 backdrop-blur-md p-10 md:p-16 rounded-[60px] shadow-2xl text-center max-w-lg w-full">
+        <div class="mb-6 flex justify-center space-x-2">
+            <svg class="text-pink-600 animate-pulse" width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <svg class="text-pink-600 animate-pulse" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" style="animation-delay: 200ms"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <svg class="text-pink-600 animate-pulse" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" style="animation-delay: 400ms"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        </div>
+        <h1 class="text-5xl font-black text-gray-800 mb-6 tracking-tighter italic"> HEHEHHEEHE Perfect! ❤️</h1>
+        <p class="text-xl text-gray-600 font-semibold mb-8">I LOVEEEE YOUUUU MUAAAHHHHHHH.</p>
+        <div id="catContainerSuccess"></div>
+    </div>
 
-    <script>
-        const noBtn = document.getElementById('noBtn');
-        const yesBtn = document.getElementById('yesBtn');
-        const mainCard = document.getElementById('mainCard');
-        const successCard = document.getElementById('successCard');
-        const catContainerSuccess = document.getElementById('catContainerSuccess');
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const mainCard = document.getElementById('mainCard');
+        const successCard = document.getElementById('successCard');
+        const catContainerSuccess = document.getElementById('catContainerSuccess');
 
-        let yesScale = 1;
-        const maxScale = 3.5;
-        let isMoving = false;
+        let yesScale = 1;
+        const maxScale = 3.5;
+        let isMoving = false;
 
-        function moveNoButton() {
-            const padding = 50;
-            const maxX = (window.innerWidth / 2) - padding;
-            const maxY = (window.innerHeight / 2) - padding;
-            
-            const newX = (Math.random() * (maxX * 2)) - maxX;
-            const newY = (Math.random() * (maxY * 2)) - maxY;
+        function moveNoButton() {
+            const padding = 50;
+            const maxX = (window.innerWidth / 2) - padding;
+            const maxY = (window.innerHeight / 2) - padding;
+            
+            const newX = (Math.random() * (maxX * 2)) - maxX;
+            const newY = (Math.random() * (maxY * 2)) - maxY;
 
-            if (!isMoving) {
-                noBtn.style.position = 'fixed';
-                noBtn.style.left = '50%';
-                noBtn.style.top = '50%';
-                isMoving = true;
-            }
+            if (!isMoving) {
+                noBtn.style.position = 'fixed';
+                noBtn.style.left = '50%';
+                noBtn.style.top = '50%';
+                isMoving = true;
+            }
 
-            noBtn.style.transform = `translate(calc(-50% + ${newX}px), calc(-50% + ${newY}px))`;
-            
-            yesScale = Math.min(yesScale + 0.15, maxScale);
-            yesBtn.style.transform = `scale(${yesScale})`;
+            noBtn.style.transform = `translate(calc(-50% + ${newX}px), calc(-50% + ${newY}px))`;
+            
+            yesScale = Math.min(yesScale + 0.15, maxScale);
+            yesBtn.style.transform = `scale(${yesScale})`;
 
-            if (yesScale > 3) {
-                noBtn.style.opacity = '0.3';
-            }
-        }
+            if (yesScale > 3) {
+                noBtn.style.opacity = '0.3';
+            }
+        }
 
-        noBtn.addEventListener('mouseover', moveNoButton);
-        noBtn.addEventListener('click', moveNoButton);
+        noBtn.addEventListener('mouseover', moveNoButton);
+        noBtn.addEventListener('click', moveNoButton);
 
-        yesBtn.addEventListener('click', () => {
-            mainCard.classList.add('hidden');
-            successCard.classList.remove('hidden');
-            const cat = document.querySelector('.relative.w-48.h-48');
-            catContainerSuccess.appendChild(cat);
-        });
+        yesBtn.addEventListener('click', () => {
+            mainCard.classList.add('hidden');
+            successCard.classList.remove('hidden');
+            const cat = document.querySelector('.relative.w-48.h-48');
+            catContainerSuccess.appendChild(cat);
+        });
 
-        window.addEventListener('resize', () => {
-            if (isMoving) moveNoButton();
-        });
-    </script>
+        window.addEventListener('resize', () => {
+            if (isMoving) moveNoButton();
+        });
+    </script>
 </body>
 </html>
