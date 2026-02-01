@@ -1,18 +1,27 @@
 import React, { useState, useCallback } from 'react';
 import { Heart } from 'lucide-react';
 
+/**
+ * Valentine Card Component
+ * Designed to be used in a standard React environment (e.g., Vite/CRA).
+ * Features:
+ * 1. An evasive "No" button that teleports on hover/click.
+ * 2. An aggressive "Yes" button that grows with every dodge.
+ * 3. A sitting cat SVG illustration.
+ */
 const App = () => {
   const [noButtonPos, setNoButtonPos] = useState({ x: 0, y: 0 });
   const [yesScale, setYesScale] = useState(1);
   const [isAccepted, setIsAccepted] = useState(false);
   const [isMoving, setIsMoving] = useState(false);
 
-  // Maximum scale for the "Yes" button to avoid total layout collapse
+  // Maximum scale to ensure the UI doesn't completely break on small screens
   const MAX_SCALE = 3.5;
 
-  // Function to move the "No" button randomly and grow the "Yes" button
-  const moveNoButton = useCallback(() => {
+  // Handles the "No" button logic: dodges and triggers the growth of "Yes"
+  const handleNoInteraction = useCallback(() => {
     const padding = 50;
+    // Calculate boundaries relative to the viewport for the dodge
     const maxX = (window.innerWidth / 2) - padding;
     const maxY = (window.innerHeight / 2) - padding;
     
@@ -22,15 +31,15 @@ const App = () => {
     setNoButtonPos({ x: newX, y: newY });
     setIsMoving(true);
 
-    // Increment scale by 15% each dodge until max is reached
+    // Increment scale by 15% each time the user fails to click "No"
     setYesScale(prev => Math.min(prev + 0.15, MAX_SCALE));
   }, []);
 
-  // SVG of a sitting cat
+  // SVG component representing a sitting cat with heart-themed details
   const SittingCat = () => (
     <div className="relative w-48 h-48 mx-auto mb-4">
       <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-lg">
-        {/* Tail */}
+        {/* Decorative curling tail */}
         <path 
           d="M65 85 C 85 85, 95 70, 85 55 C 80 45, 70 50, 70 60" 
           fill="none" 
@@ -39,24 +48,23 @@ const App = () => {
           strokeLinecap="round" 
         />
         
-        {/* Body */}
+        {/* Main body shape */}
         <ellipse cx="50" cy="75" rx="22" ry="20" fill="#E8B282" />
         
-        {/* Chest/Front Paws Area */}
+        {/* Paws/chest markers */}
         <path d="M40 75 L40 92 M60 75 L60 92" stroke="#D6A072" strokeWidth="4" strokeLinecap="round" />
         
-        {/* Head */}
+        {/* Head and ears */}
         <circle cx="50" cy="45" r="18" fill="#E8B282" />
-        
-        {/* Ears */}
         <path d="M35 35 L28 18 L45 32 Z" fill="#E8B282" />
         <path d="M65 35 L72 18 L55 32 Z" fill="#E8B282" />
         
-        {/* Face Details */}
+        {/* Facial features */}
         <circle cx="43" cy="43" r="2" fill="#000" />
         <circle cx="57" cy="43" r="2" fill="#000" />
         <path d="M50 48 L48 51 L52 51 Z" fill="#D65B82" />
         
+        {/* Whiskers */}
         <g stroke="#B38A65" strokeWidth="0.5">
           <line x1="38" y1="48" x2="28" y2="47" />
           <line x1="38" y1="50" x2="28" y2="52" />
@@ -65,12 +73,14 @@ const App = () => {
         </g>
       </svg>
       
+      {/* Animated heart near cat */}
       <div className="absolute top-4 right-6 animate-bounce">
         <Heart className="w-8 h-8 text-pink-500 fill-pink-500 drop-shadow-sm" />
       </div>
     </div>
   );
 
+  // Success state view
   if (isAccepted) {
     return (
       <div className="min-h-screen bg-[#FDE2E4] flex flex-col items-center justify-center p-4">
@@ -88,6 +98,7 @@ const App = () => {
     );
   }
 
+  // Main interaction view
   return (
     <div className="min-h-screen bg-[#FDE2E4] flex items-center justify-center p-4 overflow-hidden font-sans select-none">
       <div className="bg-white/95 backdrop-blur-sm p-10 md:p-16 rounded-[60px] shadow-2xl text-center max-w-xl w-full relative border-4 border-white transition-all duration-300">
@@ -99,6 +110,7 @@ const App = () => {
         </h1>
 
         <div className="flex justify-center items-center gap-10 relative min-h-[160px]">
+          {/* Growth Button: Scales up to dominate the screen */}
           <button
             onClick={() => setIsAccepted(true)}
             style={{ 
@@ -110,16 +122,17 @@ const App = () => {
             Yes
           </button>
 
+          {/* Evasive Button: Dodges user input */}
           <button
-            onMouseEnter={moveNoButton}
-            onClick={moveNoButton}
+            onMouseEnter={handleNoInteraction}
+            onClick={handleNoInteraction}
             style={{
               position: isMoving ? 'fixed' : 'relative',
               left: isMoving ? '50%' : 'auto',
               top: isMoving ? '50%' : 'auto',
               transform: isMoving ? `translate(calc(-50% + ${noButtonPos.x}px), calc(-50% + ${noButtonPos.y}px))` : 'none',
               transition: isMoving ? 'all 0.1s cubic-bezier(0.34, 1.56, 0.64, 1)' : 'none',
-              opacity: yesScale > 3 ? 0.5 : 1 // Fade out as Yes button dominates
+              opacity: yesScale > 3 ? 0.3 : 1 // Fade out as Yes button dominates to emphasize choice
             }}
             className="px-12 py-5 bg-gray-100 text-gray-400 text-xl font-bold rounded-full shadow-inner border-2 border-gray-200 z-20 whitespace-nowrap cursor-default"
           >
