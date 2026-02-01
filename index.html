@@ -77,9 +77,12 @@
         <h1 class="text-5xl font-black text-gray-800 mb-6 tracking-tighter italic"> HEHEHEHEHE Perfect! ❤️</h1>
         <p class="text-xl text-gray-600 font-semibold mb-8">I LOVEEE YOUUUU MUUAAAAAAHHHHH.</p>
         
-        <!-- GIF Added Here -->
+        <!-- Video Player replaces the GIF -->
         <div class="flex justify-center mb-8">
-            <img src="https://media.tenor.com/gU_vS5sbV_EAAAAM/tkthao219-peach.gif" alt="Celebration GIF" class="rounded-2xl shadow-lg w-64 h-auto">
+            <video id="successVideo" autoplay loop muted playsinline class="rounded-2xl shadow-lg w-64 h-auto">
+                <source src="YOUR_VIDEO_URL_HERE.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
 
         <div id="catContainerSuccess"></div>
@@ -91,6 +94,7 @@
         const mainCard = document.getElementById('mainCard');
         const successCard = document.getElementById('successCard');
         const catContainerSuccess = document.getElementById('catContainerSuccess');
+        const successVideo = document.getElementById('successVideo');
 
         let yesScale = 1;
         const maxScale = 3.5;
@@ -127,6 +131,10 @@
         yesBtn.addEventListener('click', () => {
             mainCard.classList.add('hidden');
             successCard.classList.remove('hidden');
+            
+            // Explicitly call play() to ensure autoplay works after interaction
+            successVideo.play().catch(e => console.log("Autoplay prevented:", e));
+
             const cat = document.querySelector('.relative.w-48.h-48');
             catContainerSuccess.appendChild(cat);
         });
